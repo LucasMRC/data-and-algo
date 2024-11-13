@@ -5,12 +5,12 @@ import (
 	"reflect"
 )
 
-type AlgorithmTestCase[T, S any] struct {
+type BasicTestCase[T, S any] struct {
 	Value    T
 	Expected S
 }
 
-type DataStructureTestCase[T, S any] struct {
+type ActionTestCase[T, S any] struct {
 	Name     string
 	Action   func(*T)
 	Expected S

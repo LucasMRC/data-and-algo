@@ -7,6 +7,7 @@ import (
 
 	algo "github.com/LucasMRC/kata-machine-go/internals/algorithms"
 	data "github.com/LucasMRC/kata-machine-go/internals/data_structures"
+	ex "github.com/LucasMRC/kata-machine-go/internals/exercises"
 )
 
 func main() {
@@ -17,8 +18,8 @@ func main() {
 		what = "all"
 		run = "all"
 	} else {
-		if !slices.Contains([]string{"algo", "data", "all"}, os.Args[1]) {
-			fmt.Printf("Invalid argument.\nValid options:\n\t- %s (algorithms)\n\t- %s (data structures)", "algo", "data")
+		if !slices.Contains([]string{"algo", "data", "all", "ex"}, os.Args[1]) {
+			fmt.Printf("Invalid argument.\nValid options:\n\t- %s (algorithms)\n\t- %s (data structures)\n\t- %s (exercises)\n", "algo", "data", "ex")
 			os.Exit(1)
 		}
 	}
@@ -28,13 +29,18 @@ func main() {
 	} else {
 		switch os.Args[1] {
 		case "algo":
-			if !slices.Contains([]string{"linear", "binary", "crystall", "bubble", "all"}, os.Args[2]) {
-				fmt.Printf("Invalid argument.\nValid options:\n\t- %s (Linear)\n\t- %s (Binary)\n\t- %s (Bubble search)\n\t- %s (Crystall Balls exercise)", "linear", "binary", "bubble", "crystall")
+			if !slices.Contains([]string{"linear", "binary", "bubble", "all"}, os.Args[2]) {
+				fmt.Printf("Invalid argument.\nValid options:\n\t- %s (Linear)\n\t- %s (Binary)\n\t- %s (Bubble search)\n", "linear", "binary", "bubble")
 				os.Exit(1)
 			}
 		case "data":
 			if !slices.Contains([]string{"linked", "double", "stack", "all"}, os.Args[2]) {
-				fmt.Printf("Invalid argument.\nValid options:\n\t- %s (Linked List)\n\t- %s (Double Linked List)\n\t- %s (Stack)", "linked", "double", "stack")
+				fmt.Printf("Invalid argument.\nValid options:\n\t- %s (Linked List)\n\t- %s (Double Linked List)\n\t- %s (Stack)\n", "linked", "double", "stack")
+				os.Exit(1)
+			}
+		case "ex":
+			if !slices.Contains([]string{"crystall", "all"}, os.Args[2]) {
+				fmt.Printf("Invalid argument.\nValid options:\n\t- %s (Crystall Balls)\n", "crystall")
 				os.Exit(1)
 			}
 		}
@@ -47,5 +53,7 @@ func main() {
 		algo.Run(run)
 	case "data":
 		data.Run(run)
+	case "ex":
+		ex.Run(run)
 	}
 }

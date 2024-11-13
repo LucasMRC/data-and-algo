@@ -2,7 +2,7 @@ package algorithms
 
 import "github.com/LucasMRC/kata-machine-go/internals/test_utils"
 
-var search_test_cases = []test_utils.AlgorithmTestCase[int, bool]{
+var search_test_cases = []test_utils.BasicTestCase[int, bool]{
 	{
 		Value:    3,
 		Expected: true,
@@ -37,30 +37,7 @@ var search_test_cases = []test_utils.AlgorithmTestCase[int, bool]{
 	},
 }
 
-var crystall_ball_test_cases = []test_utils.AlgorithmTestCase[[]bool, int]{
-	{
-		Value:    []bool{false, false, false, false, false, false, false, true, true},
-		Expected: 7,
-	},
-	{
-		Value:    []bool{false, false, false, false, false, false, false, false, true},
-		Expected: 8,
-	},
-	{
-		Value:    []bool{false, false, false, false, false, false, false, false, false},
-		Expected: -1,
-	},
-	{
-		Value:    []bool{true, true, true, true, true, true, true, true, true},
-		Expected: 0,
-	},
-	{
-		Value:    []bool{false, false, true, true, true, true, true, true, true},
-		Expected: 2,
-	},
-}
-
-var sort_test_cases = []test_utils.AlgorithmTestCase[[]int, []int]{
+var sort_test_cases = []test_utils.BasicTestCase[[]int, []int]{
 	{
 		Value:    []int{4, 1, 5, 12, 55, 23, 7, 18, 3},
 		Expected: []int{1, 3, 4, 5, 7, 12, 18, 23, 55},

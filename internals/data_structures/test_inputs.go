@@ -12,7 +12,7 @@ type testResult struct {
 	tail   node
 }
 
-var LinkedList_TestCases = []test_utils.DataStructureTestCase[LinkedList[int], testResult]{
+var LinkedList_TestCases = []test_utils.ActionTestCase[LinkedList[int], testResult]{
 	{
 		Name:     "Empty list",
 		Action:   func(l *LinkedList[int]) {},
@@ -70,7 +70,7 @@ var LinkedList_TestCases = []test_utils.DataStructureTestCase[LinkedList[int], t
 	},
 }
 
-var DoubleLinkedList_TestCases = []test_utils.DataStructureTestCase[DoubleLinkedList[int], testResult]{
+var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[int], testResult]{
 	{
 		Name:     "Empty list",
 		Action:   func(l *DoubleLinkedList[int]) {},
