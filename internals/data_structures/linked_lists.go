@@ -1,7 +1,5 @@
 package data_structures
 
-import "errors"
-
 type linked_node[T any] struct {
 	Value T
 	Next  *linked_node[T]
@@ -43,9 +41,6 @@ func (l *LinkedList[T]) Prepend(v T) {
 }
 
 func (l *LinkedList[T]) Shift() (linked_node[T], error) {
-	if l.Length() == 0 {
-		return linked_node[T]{}, errors.New("Cannot pop an empty list")
-	}
 	n := *l.head
 	l.head = n.Next
 	l.length--

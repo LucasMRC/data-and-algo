@@ -2,11 +2,7 @@ package exercises
 
 import (
 	"math"
-
-	"github.com/LucasMRC/kata-machine-go/internals/test_utils"
 )
-
-var test_results = test_utils.TestResults
 
 func crystall_balls(bools []bool) int {
 	rs := int(math.Floor(math.Sqrt(float64(len(bools)))))

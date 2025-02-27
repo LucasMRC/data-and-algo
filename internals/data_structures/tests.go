@@ -66,11 +66,11 @@ func TestDoubleLinkedList() {
 		}
 		fmt.Printf("\tHead: %v\n", rh)
 		if rh == test_results.FAILED {
-			fmt.Printf("\t  expected value %v, result %v\n", test.Expected.head.value, l.head)
+			fmt.Printf("\t  expected value %v, result %v\n", test.Expected.head.value, l.head.Value)
 		}
 		fmt.Printf("\tTail: %v\n", rt)
 		if rt == test_results.FAILED {
-			fmt.Printf("\t  expected value %v, result %v\n", test.Expected.tail.value, l.tail)
+			fmt.Printf("\t  expected value %v, result %v\n", test.Expected.tail.value, l.tail.Value)
 		}
 	}
 }

@@ -12,6 +12,8 @@ func Run(f string) {
 		TestDoubleLinkedList()
 	case "stack":
 		TestStack()
+	// case "queu":
+	// TestQueu()
 	case "all":
 		TestLinkedList()
 		TestDoubleLinkedList()

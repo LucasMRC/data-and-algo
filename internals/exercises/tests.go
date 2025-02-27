@@ -6,6 +6,8 @@ import (
 	"github.com/LucasMRC/kata-machine-go/internals/test_utils"
 )
 
+var test_results = test_utils.TestResults
+
 func testCrystallBalls() {
 	fmt.Println("CrystallBalls: running tests.")
 	fmt.Println("-----------------------------")
@@ -19,5 +21,4 @@ func testCrystallBalls() {
 			fmt.Printf("\texpected %v, result %v\n", test.Expected, result)
 		}
 	}
-	fmt.Println("============================")
 }

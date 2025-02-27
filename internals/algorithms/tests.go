@@ -32,11 +32,11 @@ func testBinarySearch() {
 	test_cases := search_test_cases
 
 	for i, test := range test_cases {
-		result := binary_search(input, test.Value)
-		test_status := test_utils.ToEqual(result, test.Expected)
+		is_present, _ := binary_search(input, test.Value)
+		test_status := test_utils.ToEqual(is_present, test.Expected)
 		fmt.Printf("test case %d: %v\n", i, test_status)
 		if test_status == test_results.FAILED {
-			fmt.Printf("\texpected %v, result %v\n", test.Expected, result)
+			fmt.Printf("\texpected %v, result %v\n", test.Expected, is_present)
 		}
 	}
 	fmt.Println("============================")

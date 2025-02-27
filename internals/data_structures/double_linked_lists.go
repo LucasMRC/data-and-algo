@@ -37,7 +37,7 @@ func (l *DoubleLinkedList[T]) Prepend(v T) {
 		Next:  l.head,
 	}
 	if l.head != nil {
-		l.head.Next = &n
+		l.head.Prev = &n
 	}
 	l.head = &n
 	if l.tail == nil {
@@ -48,7 +48,7 @@ func (l *DoubleLinkedList[T]) Prepend(v T) {
 
 func (l *DoubleLinkedList[T]) InsertAt(v T, i int) {
 	cn := l.tail
-	for j := 0; j < i; j++ {
+	for range i {
 		cn = cn.Next
 	}
 	n := double_linked_node[T]{
@@ -77,7 +77,7 @@ func (l *DoubleLinkedList[T]) Shift() double_linked_node[T] {
 
 func (l *DoubleLinkedList[T]) RemoveAt(i int) double_linked_node[T] {
 	cn := l.tail
-	for j := 0; j <= i; j++ {
+	for range i {
 		cn = cn.Next
 	}
 	cn.Next.Prev = cn.Prev
@@ -89,7 +89,7 @@ func (l *DoubleLinkedList[T]) RemoveAt(i int) double_linked_node[T] {
 
 func (l *DoubleLinkedList[T]) Get(i int) double_linked_node[T] {
 	cn := l.tail
-	for j := 0; j <= i; j++ {
+	for range i {
 		cn = cn.Next
 	}
 	return *cn
