@@ -32,8 +32,8 @@ func main() {
 				os.Exit(1)
 			}
 		case "data":
-			if !slices.Contains([]string{"linked", "double", "stack", "all"}, os.Args[2]) {
-				fmt.Printf("Invalid argument '%s'.\nValid options:\n\t- %s (Linked List)\n\t- %s (Double Linked List)\n\t- %s (Stack)\n", os.Args[2], "linked", "double", "stack")
+			if !slices.Contains([]string{"linked", "double", "stack", "queue", "all"}, os.Args[2]) {
+				fmt.Printf("Invalid argument '%s'.\nValid options:\n\t- %s (Linked List)\n\t- %s (Double Linked List)\n\t- %s (Stack)\n\t- %s (Queue)\n", os.Args[2], "linked", "double", "stack", "queue")
 				os.Exit(1)
 			}
 		case "ex":

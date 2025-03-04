@@ -146,3 +146,40 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 		},
 	},
 }
+
+var Queue_TestCases = []test_utils.ActionTestCase[Queue[int], int]{
+	{
+		Name: "Enqueue four",
+		Action: func(l *Queue[int]) {
+			l.Enqueue(4)
+			l.Enqueue(3)
+			l.Enqueue(2)
+			l.Enqueue(1)
+		},
+		Expected: 4,
+	},
+	{
+		Name: "Deque two",
+		Action: func(l *Queue[int]) {
+			l.Deque()
+			l.Deque()
+		},
+		Expected: 2,
+	},
+	{
+		Name: "Enqueue three",
+		Action: func(l *Queue[int]) {
+			l.Enqueue(3)
+			l.Enqueue(4)
+			l.Enqueue(1)
+		},
+		Expected: 2,
+	},
+	{
+		Name: "Deque one",
+		Action: func(l *Queue[int]) {
+			l.Deque()
+		},
+		Expected: 1,
+	},
+}

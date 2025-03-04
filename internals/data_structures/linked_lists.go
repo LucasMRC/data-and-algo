@@ -40,9 +40,9 @@ func (l *LinkedList[T]) Prepend(v T) {
 	l.length++
 }
 
-func (l *LinkedList[T]) Shift() (linked_node[T], error) {
+func (l *LinkedList[T]) Shift() linked_node[T] {
 	n := *l.head
 	l.head = n.Next
 	l.length--
-	return n, nil
+	return n
 }
