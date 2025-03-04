@@ -21,7 +21,7 @@ var LinkedList_TestCases = []test_utils.ActionTestCase[LinkedList[int], testResu
 		Expected: testResult{},
 	},
 	{
-		Name: "Appended 4",
+		Name: "Append four",
 		Action: func(l *LinkedList[int]) {
 			l.Append(4)
 			l.Append(3)
@@ -39,7 +39,7 @@ var LinkedList_TestCases = []test_utils.ActionTestCase[LinkedList[int], testResu
 		},
 	},
 	{
-		Name: "Prepended 2",
+		Name: "Prepend two",
 		Action: func(l *LinkedList[int]) {
 			l.Prepend(5)
 			l.Prepend(6)
@@ -55,7 +55,7 @@ var LinkedList_TestCases = []test_utils.ActionTestCase[LinkedList[int], testResu
 		},
 	},
 	{
-		Name: "Shifted two",
+		Name: "Shift two",
 		Action: func(l *LinkedList[int]) {
 			l.Shift()
 			l.Shift()
@@ -79,7 +79,7 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 		Expected: testResult{},
 	},
 	{
-		Name: "Appended four",
+		Name: "Append four",
 		Action: func(l *DoubleLinkedList[int]) {
 			l.Append(4)
 			l.Append(3)
@@ -97,7 +97,7 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 		},
 	},
 	{
-		Name: "Prepended two",
+		Name: "Prepend two",
 		Action: func(l *DoubleLinkedList[int]) {
 			l.Prepend(5)
 			l.Prepend(6)
@@ -113,7 +113,7 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 		},
 	},
 	{
-		Name: "Poped three",
+		Name: "Pop three",
 		Action: func(l *DoubleLinkedList[int]) {
 			l.Pop()
 			l.Pop()
@@ -130,7 +130,7 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 		},
 	},
 	{
-		Name: "Shifted two",
+		Name: "Shift two",
 		Action: func(l *DoubleLinkedList[int]) {
 			l.Shift()
 			l.Shift()
