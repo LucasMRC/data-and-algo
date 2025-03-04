@@ -1,11 +1,5 @@
 package data_structures
 
-type IQueue[T any] interface {
-	Enqueue(T)
-	Deque() linked_node[T]
-	Peek() T
-}
-
 type Queue[T any] struct {
 	head   *linked_node[T]
 	tail   *linked_node[T]

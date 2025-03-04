@@ -2,12 +2,6 @@ package data_structures
 
 import "errors"
 
-type IStack[T any] interface {
-	Push(T)
-	Pop() T
-	Peek() T
-}
-
 type Stack[T any] struct {
 	Length int
 	head   *linked_node[T]
