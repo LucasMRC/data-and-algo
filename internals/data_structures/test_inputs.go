@@ -183,3 +183,40 @@ var Queue_TestCases = []test_utils.ActionTestCase[Queue[int], int]{
 		Expected: 1,
 	},
 }
+
+var Stack_TestCases = []test_utils.ActionTestCase[Stack[int], int]{
+	{
+		Name: "Push four",
+		Action: func(l *Stack[int]) {
+			l.Push(4)
+			l.Push(3)
+			l.Push(2)
+			l.Push(1)
+		},
+		Expected: 1,
+	},
+	{
+		Name: "Pop two",
+		Action: func(l *Stack[int]) {
+			l.Pop()
+			l.Pop()
+		},
+		Expected: 3,
+	},
+	{
+		Name: "Push three",
+		Action: func(l *Stack[int]) {
+			l.Push(3)
+			l.Push(4)
+			l.Push(1)
+		},
+		Expected: 1,
+	},
+	{
+		Name: "Pop one",
+		Action: func(l *Stack[int]) {
+			l.Pop()
+		},
+		Expected: 4,
+	},
+}

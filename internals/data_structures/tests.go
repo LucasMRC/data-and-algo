@@ -92,4 +92,18 @@ func TestQueue() {
 	fmt.Println("============================")
 }
 
-func TestStack() {}
+func TestStack() {
+	fmt.Println("Stack: running tests.")
+	fmt.Println("----------------------------")
+	q := Stack[int]{}
+	for _, test := range Stack_TestCases {
+		test.Action(&q)
+		result := q.Peek()
+		test_status := test_utils.ToEqual(result, test.Expected)
+		fmt.Printf("%s: %v\n", test.Name, test_status)
+		if test_status == test_results.FAILED {
+			fmt.Printf("\texpected %v, result %v\n", test.Expected, result)
+		}
+	}
+	fmt.Println("============================")
+}
