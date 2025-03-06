@@ -107,3 +107,18 @@ func TestStack() {
 	}
 	fmt.Println("============================")
 }
+
+func TestArrayList() {
+	fmt.Println("ArrayList: running tests.")
+	fmt.Println("----------------------------")
+	q := ArrayList[int]{}
+	for _, test := range ArrayList_TestCases {
+		result := test.Action(&q)
+		test_status := test_utils.SlicesToEqual(result, test.Expected)
+		fmt.Printf("%s: %v\n", test.Name, test_status)
+		if test_status == test_results.FAILED {
+			fmt.Printf("\texpected %v, result %v\n", test.Expected, result)
+		}
+	}
+	fmt.Println("============================")
+}

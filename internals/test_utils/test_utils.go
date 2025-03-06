@@ -16,6 +16,12 @@ type ActionTestCase[T, S any] struct {
 	Expected S
 }
 
+type ActionReturnTestCase[T, S any] struct {
+	Name     string
+	Action   func(*T) S
+	Expected S
+}
+
 type testResultsObject struct {
 	PASSED string
 	FAILED string

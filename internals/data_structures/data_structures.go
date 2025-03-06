@@ -14,10 +14,13 @@ func Run(f string) {
 		TestStack()
 	case "queue":
 		TestQueue()
+	case "arraylist":
+		TestArrayList()
 	case "all":
 		TestLinkedList()
 		TestDoubleLinkedList()
 		TestStack()
 		TestQueue()
+		TestArrayList()
 	}
 }

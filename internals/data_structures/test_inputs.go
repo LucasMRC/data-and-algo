@@ -220,3 +220,53 @@ var Stack_TestCases = []test_utils.ActionTestCase[Stack[int], int]{
 		Expected: 4,
 	},
 }
+
+var ArrayList_TestCases = []test_utils.ActionReturnTestCase[ArrayList[int], []int]{
+	{
+		Name: "First",
+		Action: func(a *ArrayList[int]) []int {
+			a.Append(5)
+			a.Append(7)
+			a.Append(9)
+
+			result1 := a.Get(2)
+			result2 := a.RemoveAt(1)
+			result3 := a.Length
+
+			return []int{result1, result2, result3}
+		},
+		Expected: []int{9, 7, 2},
+	},
+	{
+		Name: "Second",
+		Action: func(a *ArrayList[int]) []int {
+			a.Append(11)
+
+			result1 := a.RemoveAt(1)
+			result2 := a.Remove(9)
+			result3 := a.RemoveAt(0)
+			result4 := a.RemoveAt(0)
+			result5 := a.Length
+
+			return []int{result1, result2, result3, result4, result5}
+		},
+		Expected: []int{9, 0, 5, 11, 0},
+	},
+	{
+		Name: "Third",
+		Action: func(a *ArrayList[int]) []int {
+			a.Prepend(5)
+			a.Prepend(7)
+			a.Prepend(9)
+
+			result1 := a.Get(2)
+			result2 := a.Get(0)
+			result3 := a.Remove(9)
+			result4 := a.Length
+			result5 := a.Get(0)
+
+			return []int{result1, result2, result3, result4, result5}
+		},
+		Expected: []int{5, 9, 9, 2, 7},
+	},
+}
