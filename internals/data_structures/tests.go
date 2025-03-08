@@ -8,14 +8,14 @@ import (
 
 var test_results = test_utils.TestResults
 
-func TestLinkedList() {
+func TestSinglyLinkedList() {
 	fmt.Println("LinkedList: running tests.")
 	fmt.Println("----------------------------")
-	l := LinkedList[int]{}
+	l := SinglyLinkedList[int]{}
 	var rl string
 	var rh string
 	var rt string
-	for _, test := range LinkedList_TestCases {
+	for _, test := range SinglyLinkedList_TestCases {
 		fmt.Printf("\n%s:\n", test.Name)
 		test.Action(&l)
 		rl = test_utils.ToEqual(l.Length(), test.Expected.length)

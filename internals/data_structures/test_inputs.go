@@ -8,27 +8,27 @@ type node struct {
 	value int
 }
 
-type testResult struct {
+type testr struct {
 	length int
 	head   node
 	tail   node
 }
 
-var LinkedList_TestCases = []test_utils.ActionTestCase[LinkedList[int], testResult]{
+var SinglyLinkedList_TestCases = []test_utils.ActionTestCase[SinglyLinkedList[int], testr]{
 	{
 		Name:     "Empty list",
-		Action:   func(l *LinkedList[int]) {},
-		Expected: testResult{},
+		Action:   func(l *SinglyLinkedList[int]) {},
+		Expected: testr{},
 	},
 	{
 		Name: "Append four",
-		Action: func(l *LinkedList[int]) {
+		Action: func(l *SinglyLinkedList[int]) {
 			l.Append(4)
 			l.Append(3)
 			l.Append(2)
 			l.Append(1)
 		},
-		Expected: testResult{
+		Expected: testr{
 			length: 4,
 			head: node{
 				value: 4,
@@ -40,11 +40,11 @@ var LinkedList_TestCases = []test_utils.ActionTestCase[LinkedList[int], testResu
 	},
 	{
 		Name: "Prepend two",
-		Action: func(l *LinkedList[int]) {
+		Action: func(l *SinglyLinkedList[int]) {
 			l.Prepend(5)
 			l.Prepend(6)
 		},
-		Expected: testResult{
+		Expected: testr{
 			length: 6,
 			head: node{
 				value: 6,
@@ -56,11 +56,11 @@ var LinkedList_TestCases = []test_utils.ActionTestCase[LinkedList[int], testResu
 	},
 	{
 		Name: "Shift two",
-		Action: func(l *LinkedList[int]) {
+		Action: func(l *SinglyLinkedList[int]) {
 			l.Shift()
 			l.Shift()
 		},
-		Expected: testResult{
+		Expected: testr{
 			length: 4,
 			head: node{
 				value: 4,
@@ -72,11 +72,11 @@ var LinkedList_TestCases = []test_utils.ActionTestCase[LinkedList[int], testResu
 	},
 }
 
-var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[int], testResult]{
+var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[int], testr]{
 	{
 		Name:     "Empty list",
 		Action:   func(l *DoubleLinkedList[int]) {},
-		Expected: testResult{},
+		Expected: testr{},
 	},
 	{
 		Name: "Append four",
@@ -86,7 +86,7 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 			l.Append(2)
 			l.Append(1)
 		},
-		Expected: testResult{
+		Expected: testr{
 			length: 4,
 			head: node{
 				value: 4,
@@ -102,7 +102,7 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 			l.Prepend(5)
 			l.Prepend(6)
 		},
-		Expected: testResult{
+		Expected: testr{
 			length: 6,
 			head: node{
 				value: 6,
@@ -119,7 +119,7 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 			l.Pop()
 			l.Pop()
 		},
-		Expected: testResult{
+		Expected: testr{
 			length: 3,
 			head: node{
 				value: 6,
@@ -135,7 +135,7 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 			l.Shift()
 			l.Shift()
 		},
-		Expected: testResult{
+		Expected: testr{
 			length: 1,
 			head: node{
 				value: 4,
@@ -229,11 +229,11 @@ var ArrayList_TestCases = []test_utils.ActionReturnTestCase[ArrayList[int], []in
 			a.Append(7)
 			a.Append(9)
 
-			result1 := a.Get(2)
-			result2 := a.RemoveAt(1)
-			result3 := a.Length
+			r1 := a.Get(2)
+			r2 := a.RemoveAt(1)
+			r3 := a.Length
 
-			return []int{result1, result2, result3}
+			return []int{r1, r2, r3}
 		},
 		Expected: []int{9, 7, 2},
 	},
@@ -242,13 +242,13 @@ var ArrayList_TestCases = []test_utils.ActionReturnTestCase[ArrayList[int], []in
 		Action: func(a *ArrayList[int]) []int {
 			a.Append(11)
 
-			result1 := a.RemoveAt(1)
-			result2 := a.Remove(9)
-			result3 := a.RemoveAt(0)
-			result4 := a.RemoveAt(0)
-			result5 := a.Length
+			r1 := a.RemoveAt(1)
+			r2 := a.Remove(9)
+			r3 := a.RemoveAt(0)
+			r4 := a.RemoveAt(0)
+			r5 := a.Length
 
-			return []int{result1, result2, result3, result4, result5}
+			return []int{r1, r2, r3, r4, r5}
 		},
 		Expected: []int{9, 0, 5, 11, 0},
 	},
@@ -259,13 +259,13 @@ var ArrayList_TestCases = []test_utils.ActionReturnTestCase[ArrayList[int], []in
 			a.Prepend(7)
 			a.Prepend(9)
 
-			result1 := a.Get(2)
-			result2 := a.Get(0)
-			result3 := a.Remove(9)
-			result4 := a.Length
-			result5 := a.Get(0)
+			r1 := a.Get(2)
+			r2 := a.Get(0)
+			r3 := a.Remove(9)
+			r4 := a.Length
+			r5 := a.Get(0)
 
-			return []int{result1, result2, result3, result4, result5}
+			return []int{r1, r2, r3, r4, r5}
 		},
 		Expected: []int{5, 9, 9, 2, 7},
 	},

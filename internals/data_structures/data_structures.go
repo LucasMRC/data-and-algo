@@ -6,8 +6,8 @@ func Run(f string) {
 	fmt.Println("============================")
 
 	switch f {
-	case "linked":
-		TestLinkedList()
+	case "singly":
+		TestSinglyLinkedList()
 	case "double":
 		TestDoubleLinkedList()
 	case "stack":
@@ -19,7 +19,7 @@ func Run(f string) {
 	case "ring":
 		TestRingBuffer()
 	case "all":
-		TestLinkedList()
+		TestSinglyLinkedList()
 		TestDoubleLinkedList()
 		TestStack()
 		TestQueue()

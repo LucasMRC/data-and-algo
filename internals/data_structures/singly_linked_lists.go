@@ -5,17 +5,17 @@ type linked_node[T any] struct {
 	Next  *linked_node[T]
 }
 
-type LinkedList[T any] struct {
+type SinglyLinkedList[T any] struct {
 	length int
 	head   *linked_node[T]
 	tail   *linked_node[T]
 }
 
-func (l *LinkedList[T]) Length() int {
+func (l *SinglyLinkedList[T]) Length() int {
 	return l.length
 }
 
-func (l *LinkedList[T]) Append(v T) {
+func (l *SinglyLinkedList[T]) Append(v T) {
 	n := linked_node[T]{
 		Value: v,
 	}
@@ -28,7 +28,7 @@ func (l *LinkedList[T]) Append(v T) {
 	l.length++
 }
 
-func (l *LinkedList[T]) Prepend(v T) {
+func (l *SinglyLinkedList[T]) Prepend(v T) {
 	n := linked_node[T]{
 		Value: v,
 		Next:  l.head,
@@ -40,7 +40,7 @@ func (l *LinkedList[T]) Prepend(v T) {
 	l.length++
 }
 
-func (l *LinkedList[T]) Shift() linked_node[T] {
+func (l *SinglyLinkedList[T]) Shift() linked_node[T] {
 	n := *l.head
 	l.head = n.Next
 	l.length--
