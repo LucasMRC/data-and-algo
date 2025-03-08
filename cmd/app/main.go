@@ -18,8 +18,17 @@ func main() {
 		what = "all"
 		run = "all"
 	} else if argCount == 2 {
-		if !slices.Contains([]string{"algo", "data", "all", "ex"}, os.Args[1]) {
-			fmt.Printf("Invalid argument '%s'.\nValid options:\n\t- %s (algorithms)\n\t- %s (data structures)\n\t- %s (exercises)\n", os.Args[1], "algo", "data", "ex")
+		if !slices.Contains([]string{"algo", "data", "all", "exer"}, os.Args[1]) {
+			fmt.Printf(`
+Invalid argument '%s'.
+
+Valid options:
+	- %s (algorithms)
+	- %s (data structures)
+	- %s (exercises)
+
+`,
+				os.Args[1], "algo", "data", "exer")
 			os.Exit(1)
 		}
 		what = os.Args[1]
@@ -28,17 +37,45 @@ func main() {
 		switch os.Args[1] {
 		case "algo":
 			if !slices.Contains([]string{"linear", "binary", "bubble", "all"}, os.Args[2]) {
-				fmt.Printf("Invalid argument '%s'.\nValid options:\n\t- %s (Linear)\n\t- %s (Binary)\n\t- %s (Bubble search)\n", os.Args[2], "linear", "binary", "bubble")
+				fmt.Printf(`
+Invalid argument '%s'.
+
+Valid options:
+	- %s (Linear)
+	- %s (Binary)
+	- %s (Bubble sort)
+
+`,
+					os.Args[2], "linear", "binary", "bubble")
 				os.Exit(1)
 			}
 		case "data":
-			if !slices.Contains([]string{"linked", "double", "stack", "queue", "arraylist", "all"}, os.Args[2]) {
-				fmt.Printf("Invalid argument '%s'.\nValid options:\n\t- %s (Linked List)\n\t- %s (Double Linked List)\n\t- %s (Stack)\n\t- %s (Queue)\n- %s (ArrayList)", os.Args[2], "linked", "double", "stack", "queue", "arraylist")
+			if !slices.Contains([]string{"singly", "double", "stack", "queue", "arraylist", "all", "ring"}, os.Args[2]) {
+				fmt.Printf(`
+Invalid argument '%s'.
+
+Valid options:
+	- %s (Singly Linked List)
+	- %s (Double Linked List)
+	- %s (Stack)
+	- %s (Queue)
+	- %s (ArrayList),
+	- %s (RingBuffer)
+
+`,
+					os.Args[2], "singly", "double", "stack", "queue", "arraylist", "ring")
 				os.Exit(1)
 			}
 		case "ex":
 			if !slices.Contains([]string{"crystall", "all"}, os.Args[2]) {
-				fmt.Printf("Invalid argument '%s'.\nValid options:\n\t- %s (Crystall Balls)\n", os.Args[2], "crystall")
+				fmt.Printf(`
+Invalid argument '%s'.
+
+Valid options:
+	- %s (Crystall Balls)
+
+`,
+					os.Args[2], "crystall")
 				os.Exit(1)
 			}
 		}
@@ -51,7 +88,7 @@ func main() {
 		algo.Run(run)
 	case "data":
 		data.Run(run)
-	case "ex":
+	case "exer":
 		ex.Run(run)
 	case "all":
 		algo.Run(run)

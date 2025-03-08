@@ -16,11 +16,14 @@ func Run(f string) {
 		TestQueue()
 	case "arraylist":
 		TestArrayList()
+	case "ring":
+		TestRingBuffer()
 	case "all":
 		TestLinkedList()
 		TestDoubleLinkedList()
 		TestStack()
 		TestQueue()
 		TestArrayList()
+		TestRingBuffer()
 	}
 }

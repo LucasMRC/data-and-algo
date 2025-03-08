@@ -1,66 +1,64 @@
 package data_structures
 
-type RingBuffer[T any] struct {
+type RingBuffer[T comparable] struct {
 	capacity int
 	head     int
 	tail     int
 	content  []T
+	Length   int
 }
 
-func (a *RingBuffer[T]) Push(v T) {
-	if a.head == a.tail {
+func (r *RingBuffer[T]) Initialize(cap int) {
+	r.capacity = cap
+	r.content = make([]T, cap)
+	r.head = len(r.content) / 5
+	r.tail = r.head
+}
+
+func (a *RingBuffer[T]) Append(v T) {
+	if a.head == a.tail%a.capacity && a.Length > 0 {
+		content := make([]T, a.capacity*2)
+		for i := range a.tail {
+			v := a.content[a.tail%a.capacity]
+			if v != *new(T) {
+				content[i] = v
+			}
+		}
 		n := RingBuffer[T]{
 			capacity: a.capacity * 2,
-			head:     a.head,
-			tail:     a.tail,
-			content:  a.content,
+			head:     0,
+			tail:     a.Length,
+			Length:   a.Length,
+			content:  content,
 		}
-		a = &n
+		*a = n
 	}
-	a.content[a.tail] = v
+	a.content[a.tail%a.capacity] = v
 	a.tail++
+	a.Length++
 }
 
 func (a *RingBuffer[T]) Pop() T {
 	var v T
-	if a.tail == 0 {
-		var n T
-		v = a.content[a.tail]
-		a.content[a.tail] = n
-		a.tail--
-	}
-	return v
-}
-
-func (a *RingBuffer[T]) Shift(v T) {
-	if a.head == a.tail {
-		n := RingBuffer[T]{
-			capacity: a.capacity * 2,
-			head:     a.head,
-			tail:     a.tail,
-			content:  a.content,
-		}
-		a = &n
-	}
-	a.head--
-	a.content[a.head] = v
-}
-
-func (a *RingBuffer[T]) Unshift() T {
-	var v T
-	if a.tail > 0 {
-		var n T
+	if a.Length > 0 {
+		var temp T
 		v = a.content[a.head]
-		a.content[a.head] = n
+		a.content[a.head] = temp
 		a.head++
+		a.Length--
+	}
+	if a.head == a.capacity {
+		a.head = a.head % a.capacity
+		a.tail = a.tail % a.capacity
 	}
 	return v
 }
 
 func (a *RingBuffer[T]) Get(i int) T {
 	var v T
-	if i < a.tail%a.capacity {
-		v = a.content[a.head+i]
+	idx := (a.head + i) % a.capacity
+	if idx < a.tail {
+		v = a.content[idx]
 	}
 	return v
 }

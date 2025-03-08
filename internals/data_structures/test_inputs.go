@@ -270,3 +270,64 @@ var ArrayList_TestCases = []test_utils.ActionReturnTestCase[ArrayList[int], []in
 		Expected: []int{5, 9, 9, 2, 7},
 	},
 }
+
+var RingBuffer_TestCases = []test_utils.ActionReturnTestCase[RingBuffer[int], []int]{
+	{
+		Name: "First",
+		Action: func(r *RingBuffer[int]) []int {
+			r.Append(5)
+
+			r1 := r.Pop()
+			r2 := r.Pop()
+
+			return []int{r1, r2}
+		},
+		Expected: []int{5, 0},
+	},
+	{
+		Name: "Second",
+		Action: func(r *RingBuffer[int]) []int {
+			r.Append(42)
+			r.Append(9)
+
+			r1 := r.Pop()
+			r2 := r.Pop()
+			r3 := r.Pop()
+
+			return []int{r1, r2, r3}
+		},
+		Expected: []int{42, 9, 0},
+	},
+	{
+		Name: "Third",
+		Action: func(r *RingBuffer[int]) []int {
+			r.Append(42)
+			r.Append(9)
+			r.Append(12)
+
+			r1 := r.Get(2)
+			r2 := r.Get(1)
+			r3 := r.Get(0)
+
+			return []int{r1, r2, r3}
+		},
+		Expected: []int{12, 9, 42},
+	},
+	{
+		Name: "Fourth",
+		Action: func(r *RingBuffer[int]) []int {
+			r.Append(10)
+			r.Append(73)
+			r.Append(25)
+			r.Append(44)
+
+			r1 := r.Length
+			r2 := r.capacity
+			r3 := r.Get(r.head)
+			r4 := r.Get(r.tail - 1)
+
+			return []int{r1, r2, r3, r4}
+		},
+		Expected: []int{7, 10, 42, 44},
+	},
+}
