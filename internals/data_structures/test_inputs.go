@@ -330,4 +330,23 @@ var RingBuffer_TestCases = []test_utils.ActionReturnTestCase[RingBuffer[int], []
 		},
 		Expected: []int{7, 10, 42, 44},
 	},
+	{
+		Name: "Fifth",
+		Action: func(r *RingBuffer[int]) []int {
+			r.Append(14)
+			r.Append(3)
+			r.Append(83)
+			r.Append(1)
+			r.Append(35)
+			r.Append(57)
+
+			r1 := r.Pop()
+			r2 := r.Pop()
+			r3 := r.head
+			r4 := r.tail
+
+			return []int{r1, r2, r3, r4}
+		},
+		Expected: []int{42, 9, 2, 13},
+	},
 }

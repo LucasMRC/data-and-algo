@@ -16,10 +16,11 @@ func (r *RingBuffer[T]) Initialize(cap int) {
 }
 
 func (a *RingBuffer[T]) Append(v T) {
-	if a.head == a.tail%a.capacity && a.Length > 0 {
+	tail := a.tail % a.capacity
+	if a.head == tail && a.Length > 0 {
 		content := make([]T, a.capacity*2)
-		for i := range a.tail {
-			v := a.content[a.tail%a.capacity]
+		for i := range a.Length {
+			v := a.content[(a.head+i)%a.capacity]
 			if v != *new(T) {
 				content[i] = v
 			}
