@@ -66,16 +66,17 @@ Valid options:
 					os.Args[2], "singly", "double", "stack", "queue", "arraylist", "ring")
 				os.Exit(1)
 			}
-		case "ex":
-			if !slices.Contains([]string{"crystall", "all"}, os.Args[2]) {
+		case "exer":
+			if !slices.Contains([]string{"crystall", "maze", "all"}, os.Args[2]) {
 				fmt.Printf(`
 Invalid argument '%s'.
 
 Valid options:
 	- %s (Crystall Balls)
+	- %s (Maze solver)
 
 `,
-					os.Args[2], "crystall")
+					os.Args[2], "crystall", "maze")
 				os.Exit(1)
 			}
 		}

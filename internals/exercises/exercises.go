@@ -8,7 +8,10 @@ func Run(ex string) {
 	switch ex {
 	case "crystall":
 		testCrystallBalls()
+	case "maze":
+		testMazeSolver()
 	case "all":
 		testCrystallBalls()
+		testMazeSolver()
 	}
 }
