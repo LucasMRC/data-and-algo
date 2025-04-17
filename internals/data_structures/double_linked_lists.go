@@ -1,12 +1,12 @@
 package data_structures
 
-type double_linked_node[T any] struct {
+type double_linked_node[T comparable] struct {
 	Value T
 	Next  *double_linked_node[T]
 	Prev  *double_linked_node[T]
 }
 
-type DoubleLinkedList[T any] struct {
+type DoubleLinkedList[T comparable] struct {
 	length int
 	head   *double_linked_node[T]
 	tail   *double_linked_node[T]
@@ -94,3 +94,16 @@ func (l *DoubleLinkedList[T]) Get(i int) double_linked_node[T] {
 	}
 	return *cn
 }
+
+func (l *DoubleLinkedList[T]) Remove(n T) T {
+	var tmp T
+	c := l.head
+	for i := range l.Length() {
+		if c.Value == n {
+			tmp = l.RemoveAt(i).Value
+		} else {
+			c = c.Next
+		}
+	}
+	return tmp
+} 
