@@ -14,9 +14,12 @@ func Run(algo string) {
 		testBinarySearch()
 	case "bubble":
 		testBubbleSort()
+	case "quick":
+		testQuickSort()
 	case "all":
 		testLinearSearch()
 		testBinarySearch()
 		testBubbleSort()
+		testQuickSort()
 	}
 }

@@ -57,3 +57,19 @@ func testBubbleSort() {
 	}
 	fmt.Println("============================")
 }
+
+func testQuickSort() {
+	fmt.Println("QuickSort: running tests.")
+	fmt.Println("-----------------------------")
+	test_cases := sort_test_cases
+
+	for i, test := range test_cases {
+		result := quick_sort(test.Value)
+		test_status := test_utils.SlicesToEqual(result, test.Expected)
+		fmt.Printf("test case %d: %v\n", i, test_status)
+		if test_status == test_results.FAILED {
+			fmt.Printf("\texpected %v, result %v\n", test.Expected, result)
+		}
+	}
+	fmt.Println("============================")
+}

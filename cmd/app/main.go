@@ -26,7 +26,6 @@ Valid options:
 	- %s (algorithms)
 	- %s (data structures)
 	- %s (exercises)
-
 `,
 				os.Args[1], "algo", "data", "exer")
 			os.Exit(1)
@@ -36,7 +35,7 @@ Valid options:
 	} else if argCount == 3 {
 		switch os.Args[1] {
 		case "algo":
-			if !slices.Contains([]string{"linear", "binary", "bubble", "all"}, os.Args[2]) {
+			if !slices.Contains([]string{"linear", "binary", "bubble", "quick", "all"}, os.Args[2]) {
 				fmt.Printf(`
 Invalid argument '%s'.
 
@@ -44,9 +43,9 @@ Valid options:
 	- %s (Linear)
 	- %s (Binary)
 	- %s (Bubble sort)
-
+	- %s (Quick sort)
 `,
-					os.Args[2], "linear", "binary", "bubble")
+					os.Args[2], "linear", "binary", "bubble", "quick")
 				os.Exit(1)
 			}
 		case "data":
@@ -61,7 +60,6 @@ Valid options:
 	- %s (Queue)
 	- %s (ArrayList),
 	- %s (RingBuffer)
-
 `,
 					os.Args[2], "singly", "double", "stack", "queue", "arraylist", "ring")
 				os.Exit(1)
@@ -74,7 +72,6 @@ Invalid argument '%s'.
 Valid options:
 	- %s (Crystall Balls)
 	- %s (Maze solver)
-
 `,
 					os.Args[2], "crystall", "maze")
 				os.Exit(1)
