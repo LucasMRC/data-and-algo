@@ -10,15 +10,21 @@ type BasicTestCase[T, S any] struct {
 	Expected S
 }
 
-type ActionTestCase[T, S any] struct {
+type ChainedActionTestCase[T, S any] struct {
 	Name     string
 	Action   func(*T)
 	Expected S
 }
 
-type ActionReturnTestCase[T, S any] struct {
+type ChainedActionReturnTestCase[T, S any] struct {
 	Name     string
 	Action   func(*T) S
+	Expected S
+}
+
+type ActionReturnTestCase[T, S any] struct {
+	Name     string
+	Action   func() S
 	Expected S
 }
 

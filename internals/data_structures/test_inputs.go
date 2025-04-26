@@ -4,21 +4,21 @@ import (
 	"github.com/LucasMRC/kata-machine-go/internals/test_utils"
 )
 
-type node struct {
+type test_node struct {
 	value int
 }
 
-type testr struct {
+type test_result struct {
 	length int
-	head   node
-	tail   node
+	head   test_node
+	tail   test_node
 }
 
-var SinglyLinkedList_TestCases = []test_utils.ActionTestCase[SinglyLinkedList[int], testr]{
+var SinglyLinkedList_TestCases = []test_utils.ChainedActionTestCase[SinglyLinkedList[int], test_result]{
 	{
 		Name:     "Empty list",
 		Action:   func(l *SinglyLinkedList[int]) {},
-		Expected: testr{},
+		Expected: test_result{},
 	},
 	{
 		Name: "Append four",
@@ -28,12 +28,12 @@ var SinglyLinkedList_TestCases = []test_utils.ActionTestCase[SinglyLinkedList[in
 			l.Append(2)
 			l.Append(1)
 		},
-		Expected: testr{
+		Expected: test_result{
 			length: 4,
-			head: node{
+			head: test_node{
 				value: 4,
 			},
-			tail: node{
+			tail: test_node{
 				value: 1,
 			},
 		},
@@ -44,12 +44,12 @@ var SinglyLinkedList_TestCases = []test_utils.ActionTestCase[SinglyLinkedList[in
 			l.Prepend(5)
 			l.Prepend(6)
 		},
-		Expected: testr{
+		Expected: test_result{
 			length: 6,
-			head: node{
+			head: test_node{
 				value: 6,
 			},
-			tail: node{
+			tail: test_node{
 				value: 1,
 			},
 		},
@@ -60,23 +60,23 @@ var SinglyLinkedList_TestCases = []test_utils.ActionTestCase[SinglyLinkedList[in
 			l.Shift()
 			l.Shift()
 		},
-		Expected: testr{
+		Expected: test_result{
 			length: 4,
-			head: node{
+			head: test_node{
 				value: 4,
 			},
-			tail: node{
+			tail: test_node{
 				value: 1,
 			},
 		},
 	},
 }
 
-var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[int], testr]{
+var DoubleLinkedList_TestCases = []test_utils.ChainedActionTestCase[DoubleLinkedList[int], test_result]{
 	{
 		Name:     "Empty list",
 		Action:   func(l *DoubleLinkedList[int]) {},
-		Expected: testr{},
+		Expected: test_result{},
 	},
 	{
 		Name: "Append four",
@@ -86,12 +86,12 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 			l.Append(2)
 			l.Append(1)
 		},
-		Expected: testr{
+		Expected: test_result{
 			length: 4,
-			head: node{
+			head: test_node{
 				value: 4,
 			},
-			tail: node{
+			tail: test_node{
 				value: 1,
 			},
 		},
@@ -102,12 +102,12 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 			l.Prepend(5)
 			l.Prepend(6)
 		},
-		Expected: testr{
+		Expected: test_result{
 			length: 6,
-			head: node{
+			head: test_node{
 				value: 6,
 			},
-			tail: node{
+			tail: test_node{
 				value: 1,
 			},
 		},
@@ -119,12 +119,12 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 			l.Pop()
 			l.Pop()
 		},
-		Expected: testr{
+		Expected: test_result{
 			length: 3,
-			head: node{
+			head: test_node{
 				value: 6,
 			},
-			tail: node{
+			tail: test_node{
 				value: 4,
 			},
 		},
@@ -135,19 +135,19 @@ var DoubleLinkedList_TestCases = []test_utils.ActionTestCase[DoubleLinkedList[in
 			l.Shift()
 			l.Shift()
 		},
-		Expected: testr{
+		Expected: test_result{
 			length: 1,
-			head: node{
+			head: test_node{
 				value: 4,
 			},
-			tail: node{
+			tail: test_node{
 				value: 4,
 			},
 		},
 	},
 }
 
-var Queue_TestCases = []test_utils.ActionTestCase[Queue[int], int]{
+var Queue_TestCases = []test_utils.ChainedActionTestCase[Queue[int], int]{
 	{
 		Name: "Enqueue four",
 		Action: func(l *Queue[int]) {
@@ -184,7 +184,7 @@ var Queue_TestCases = []test_utils.ActionTestCase[Queue[int], int]{
 	},
 }
 
-var Stack_TestCases = []test_utils.ActionTestCase[Stack[int], int]{
+var Stack_TestCases = []test_utils.ChainedActionTestCase[Stack[int], int]{
 	{
 		Name: "Push four",
 		Action: func(l *Stack[int]) {
@@ -221,7 +221,7 @@ var Stack_TestCases = []test_utils.ActionTestCase[Stack[int], int]{
 	},
 }
 
-var ArrayList_TestCases = []test_utils.ActionReturnTestCase[ArrayList[int], []int]{
+var ArrayList_TestCases = []test_utils.ChainedActionReturnTestCase[ArrayList[int], []int]{
 	{
 		Name: "First",
 		Action: func(a *ArrayList[int]) []int {
@@ -271,7 +271,7 @@ var ArrayList_TestCases = []test_utils.ActionReturnTestCase[ArrayList[int], []in
 	},
 }
 
-var RingBuffer_TestCases = []test_utils.ActionReturnTestCase[RingBuffer[int], []int]{
+var RingBuffer_TestCases = []test_utils.ChainedActionReturnTestCase[RingBuffer[int], []int]{
 	{
 		Name: "First",
 		Action: func(r *RingBuffer[int]) []int {
@@ -350,3 +350,147 @@ var RingBuffer_TestCases = []test_utils.ActionReturnTestCase[RingBuffer[int], []
 		Expected: []int{42, 9, 2, 13},
 	},
 }
+
+func InitializeRingBuffer() RingBuffer[int] {
+	r := RingBuffer[int]{
+		capacity: 5,
+		content: make([]int, 5),
+		head: 0,
+		tail: 0,
+	}
+	return r
+}
+
+var tree_one = Binary_Node[int]{
+	Value: 20,
+	Right: &Binary_Node[int]{
+		Value: 50,
+		Right: &Binary_Node[int]{
+			Value: 100,
+			Right: &Binary_Node[int]{},
+			Left: &Binary_Node[int]{},
+		},
+		Left: &Binary_Node[int]{
+			Value: 30,
+			Right: &Binary_Node[int]{
+				Value: 45,
+				Right: &Binary_Node[int]{},
+				Left: &Binary_Node[int]{},
+			},
+			Left: &Binary_Node[int]{
+				Value: 29,
+				Right: &Binary_Node[int]{},
+				Left: &Binary_Node[int]{},
+			},
+		},
+	},
+	Left: &Binary_Node[int]{
+		Value: 10,
+		Right: &Binary_Node[int]{
+			Value: 15,
+			Right: &Binary_Node[int]{},
+			Left: &Binary_Node[int]{},
+		},
+		Left: &Binary_Node[int]{
+			Value: 5,
+			Right: &Binary_Node[int]{
+				Value: 7,
+				Right: &Binary_Node[int]{},
+				Left: &Binary_Node[int]{},
+			},
+			Left: &Binary_Node[int]{},
+		},
+	},
+}
+
+var tree_two = Binary_Node[int]{
+	Value: 20,
+	Right: &Binary_Node[int]{
+		Value: 50,
+		Right: &Binary_Node[int]{},
+		Left: &Binary_Node[int]{
+			Value: 30,
+			Right: &Binary_Node[int]{
+				Value: 45,
+				Right: &Binary_Node[int]{
+					Value: 49,
+					Right: &Binary_Node[int]{},
+					Left: &Binary_Node[int]{},
+				},
+				Left: &Binary_Node[int]{},
+			},
+			Left: &Binary_Node[int]{
+				Value: 29,
+				Right: &Binary_Node[int]{},
+				Left: &Binary_Node[int]{
+					Value: 21,
+					Right: &Binary_Node[int]{},
+					Left: &Binary_Node[int]{},
+				},
+			},
+		},
+	},
+	Left: &Binary_Node[int]{
+		Value: 10,
+		Right: &Binary_Node[int]{
+			Value: 15,
+			Right: &Binary_Node[int]{},
+			Left: &Binary_Node[int]{},
+		},
+		Left: &Binary_Node[int]{
+			Value: 5,
+			Right: &Binary_Node[int]{
+				Value: 7,
+				Right: &Binary_Node[int]{},
+				Left: &Binary_Node[int]{},
+			},
+			Left: &Binary_Node[int]{},
+		},
+	},
+}
+
+var Tree_TestCases = []test_utils.ActionReturnTestCase[Binary_Node[int], []int]{
+	{
+		Name: "PreOrderSearch 1",
+		Action: func() []int {
+			return tree_one.PreOrderSearch()
+		},
+		Expected: []int{20, 10, 5, 7, 15, 50, 30, 29, 45, 100},
+	},
+	{
+		Name: "PreOrderSearch 2",
+		Action: func() []int {
+			return tree_two.PreOrderSearch()
+		},
+		Expected: []int{20, 10, 5, 7, 15, 50, 30, 29, 21, 45, 49},
+	},
+	{
+		Name: "InOrderSearch 1",
+		Action: func() []int {
+			return tree_one.InOrderSearch()
+		},
+		Expected: []int{5, 7, 10, 15, 20, 29, 30, 45, 50, 100},
+	},
+	{
+		Name: "InOrderSearch 2",
+		Action: func() []int {
+			return tree_two.InOrderSearch()
+		},
+		Expected: []int{5, 7, 10, 15, 20, 21, 29, 30, 45, 49, 50},
+	},
+	{
+		Name: "PostOrderSearch 1",
+		Action: func() []int {
+			return tree_one.PostOrderSearch()
+		},
+		Expected: []int{7, 5, 15, 10, 29, 45, 30, 100, 50, 20},
+	},
+	{
+		Name: "PostOrderSearch 2",
+		Action: func() []int {
+			return tree_two.PostOrderSearch()
+		},
+		Expected: []int{7, 5, 15, 10, 21, 29, 49, 45, 30, 50, 20},
+	},
+}
+

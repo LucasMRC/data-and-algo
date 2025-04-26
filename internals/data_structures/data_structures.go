@@ -18,6 +18,8 @@ func Run(f string) {
 		TestArrayList()
 	case "ring":
 		TestRingBuffer()
+	case "tree":
+		TestTree()
 	case "all":
 		TestSinglyLinkedList()
 		TestDoubleLinkedList()
@@ -25,5 +27,6 @@ func Run(f string) {
 		TestQueue()
 		TestArrayList()
 		TestRingBuffer()
+		TestTree()
 	}
 }

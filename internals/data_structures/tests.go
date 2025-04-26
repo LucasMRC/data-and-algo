@@ -126,10 +126,23 @@ func TestArrayList() {
 func TestRingBuffer() {
 	fmt.Println("RingBuffer: running tests.")
 	fmt.Println("----------------------------")
-	q := RingBuffer[int]{}
-	q.Initialize(5)
+	q := InitializeRingBuffer()
 	for _, test := range RingBuffer_TestCases {
 		result := test.Action(&q)
+		test_status := test_utils.SlicesToEqual(result, test.Expected)
+		fmt.Printf("%s: %v\n", test.Name, test_status)
+		if test_status == test_results.FAILED {
+			fmt.Printf("\texpected %v, result %v\n", test.Expected, result)
+		}
+	}
+	fmt.Println("============================")
+}
+
+func TestTree() {
+	fmt.Println("Tree: running tests.")
+	fmt.Println("----------------------------")
+	for _, test := range Tree_TestCases {
+		result := test.Action()
 		test_status := test_utils.SlicesToEqual(result, test.Expected)
 		fmt.Printf("%s: %v\n", test.Name, test_status)
 		if test_status == test_results.FAILED {

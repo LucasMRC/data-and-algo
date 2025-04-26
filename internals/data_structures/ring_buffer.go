@@ -8,13 +8,6 @@ type RingBuffer[T comparable] struct {
 	Length   int
 }
 
-func (r *RingBuffer[T]) Initialize(cap int) {
-	r.capacity = cap
-	r.content = make([]T, cap)
-	r.head = len(r.content) / 5
-	r.tail = r.head
-}
-
 func (a *RingBuffer[T]) Append(v T) {
 	tail := a.tail % a.capacity
 	if a.head == tail && a.Length > 0 {

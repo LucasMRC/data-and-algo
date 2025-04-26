@@ -49,7 +49,7 @@ Valid options:
 				os.Exit(1)
 			}
 		case "data":
-			if !slices.Contains([]string{"singly", "double", "stack", "queue", "arraylist", "all", "ring"}, os.Args[2]) {
+			if !slices.Contains([]string{"singly", "double", "stack", "queue", "arraylist", "all", "ring", "tree"}, os.Args[2]) {
 				fmt.Printf(`
 Invalid argument '%s'.
 
@@ -60,8 +60,9 @@ Valid options:
 	- %s (Queue)
 	- %s (ArrayList),
 	- %s (RingBuffer)
+	- %s (Tree)
 `,
-					os.Args[2], "singly", "double", "stack", "queue", "arraylist", "ring")
+					os.Args[2], "singly", "double", "stack", "queue", "arraylist", "ring", "tree")
 				os.Exit(1)
 			}
 		case "exer":
